@@ -1,0 +1,32 @@
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 123
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 123
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 123
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 123
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 123
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 123
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 123
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 123
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 123
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 123
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 123
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 123
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 124
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 124
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 123
+   at RolodexApp._Default.OnClick_RemoveContact(Object sender, EventArgs e) in C:\Users\max\Documents\CSCI_2060\RolodexApp\RolodexApp\Default.aspx.cs:line 123
+
