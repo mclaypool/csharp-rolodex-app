@@ -3,281 +3,61 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <div class="container mt-3">
     <div class="row">
-      <div class="col-md-6"><!-- input form -->
-        <div class="card">
-          <div class="card-header">New Contact</div>
-          <div class="card-body">
-            <div method="post" id="newContact" onsubmit="window.location.reload()" runat="server">
-              <!-- name -->
-              <div class="form-group mb-0">
-                <label for="inputFirstName">First name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputFirstName"
-                  placeholder="First name"
-                  runat="server" />
-                <asp:RequiredFieldValidator
-                  id="validateFirstName"
-                  runat="server"
-                  class="text-danger small"
-                  ErrorMessage="First name is required"
-                  ControlToValidate="inputFirstName" />
-              </div>
-              <div class="form-group  mb-0">
-                <label for="inputLastName">Last name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputLastName"
-                  placeholder="Last name"
-                  runat="server" />
-                <asp:RequiredFieldValidator
-                  id="validateLastName"
-                  runat="server"
-                  class="text-danger small"
-                  ErrorMessage="Last name is required"
-                  ControlToValidate="inputLastName" />
-              </div>
-              <!-- contact -->
-              <div class="form-group mb-0">
-                <label for="inputPhone">Phone</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputPhone"
-                  placeholder="Phone"
-                  runat="server" />
-                <asp:RequiredFieldValidator
-                  id="validatePhone"
-                  runat="server"
-                  class="text-danger small"
-                  ErrorMessage="A phone number is required"
-                  ControlToValidate="inputPhone" />
-                <asp:RegularExpressionValidator
-                  id="validatePhoneRegex"
-                  runat="server"
-                  class="text-danger small"
-                  ValidationExpression="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$"
-                  ErrorMessage="Invalid phone format"
-                  ControlToValidate="inputPhone" />             
-              </div>
-              <div class="form-group mb-0">
-                <label for="inputEmail">Email address</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="inputEmail"
-                  placeholder="Enter email"
-                  runat="server" />
-                <asp:RequiredFieldValidator
-                  id="validateEmailRequired"
-                  class="text-danger small"
-                  runat="server"
-                  ErrorMessage="An email is required"
-                  ControlToValidate="inputEmail" />
-                <asp:RegularExpressionValidator
-                  id="validateEmailRegex"
-                  class="text-danger small"
-                  runat="server"
-                  ValidationExpression="^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$"
-                  ErrorMessage="Invalid email format"
-                  ControlToValidate="inputEmail" />
-              </div>
-              <!-- job -->
-              <div class="form-row">
-                <div class="col">
-                  <div class="form-group">
-                    <label for="inputJobTitle">Job Title</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputJobTitle"
-                      placeholder="Job Title"
-                      runat="server" />
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label for="inputCompany">Company</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputCompany"
-                      placeholder="Company"
-                      runat="server" />
-                  </div>
-                </div>
-              </div>
-              <!-- address -->
-              <div class="form-group">
-                <label for="inputStreet">Street</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputStreet"
-                  placeholder="Street"
-                  runat="server" />
-              </div>
-              <div class="form-row">
-                <div class="col-6">
-                  <div class="form-group">
-                    <label for="inputCity">City</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputCity"
-                      placeholder="City"
-                      runat="server" />
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label for="inputState">State</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputState"
-                      placeholder="State"
-                      runat="server" />
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label for="inputZip">Zip</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputZip"
-                      placeholder="Zip"
-                      runat="server" />
-                  </div>
-                </div>
-              </div>
-              <!-- button -->
-              <button
-                type="submit"
-                class="btn btn-primary"
-                onserverclick="OnClick_AddContact"
-                runat="server"
-                CausesValidation="true"
-              >
-                Add Contact
-              </button>
-              <asp:ValidationSummary
-                id="ValidationSummary"
-                class="text-danger mt-3"
-                runat="server" 
-                DisplayMode ="BulletList"
-                ShowSummary ="true"
-                HeaderText="Errors:" />
-            </div>
-          </div>
-        </div>
-      </div><!-- input form -->
-      <div class="col-md-6"><!-- rolodex cards -->
-        <asp:Repeater id="rolodex" runat="server">
-          <ItemTemplate>
-            <div class="card mb-3" style="max-width: 960px;"><!-- one card -->
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                  <img src="static/images/default_image.png"
-                        class="card-img h-100 w-100"
-                        alt="default_image.png"
-                        style="max-height: 15rem;">
-                </div>
-                <div class="col-md-8">
-                  <asp:Button
-                    type="button"
-                    class="btn btn-outline-secondary float-right border-0"
-                    CommandArgument='<%# Eval("Id") %>'
-                    text="X"
-                    OnClick="OnClick_RemoveContact" 
-                    runat="server"
-                    CausesValidation="false"
-                  />
-                  <div class="card-body pb-0">
-                    <h5 class="card-title mb-0 pb-0">
-                      <%# Eval("FirstName") %> <%# Eval("LastName") %>
-                    </h5>
-                    <p class="card-text mt-0 pt-0">
-                      <small class="text-muted">
-                        <%# Eval("JobTitle") %> @ <%# Eval("Company") %>
-                      </small>
-                    </p>
-                    <p class="card-text mb-0 pb-0">
-                      <span>Phone: </span>
-                      <span class="font-weight-bold"><%# Eval("Phone") %></span>
-                    </p>
-                    <p class="card-text">
-                      <span>Email: </span>
-                      <span class="font-weight-bold"><%# Eval("Email") %></span>
-                    </p>
-                    <div class="card-text form-inline">
-                      <span class="align-top" style="height: 4rem;">Address:</span>
-                      <ul class="list-unstyled pl-3">
-                        <li class="font-weight-bold"><%# Eval("Street") %></li>
-                        <li class="font-weight-bold">
-                          <%# Eval("City") %>, <%# Eval("State") %> <%# Eval("Zip") %>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div><!-- card text -->
-                
-              </div><!-- card details row -->
-              <ul class="list-group list-group-flush">
-                
-                <li class="list-group-item pb-0">
-                  <div class="form-row">
-                    <div class="col-4">
-                      <div class="input-group">
-                        <select class="custom-select" id="selectType">
-                          <option value="1" selected>Meeting</option>
-                          <option value="2">Appointment</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="form-group">
-                        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                          <asp:TextBox
-                            id="inputDateTime"
-                            type="text"
-                            class="form-control datetimepicker-input"
-                            data-target="#datetimepicker1"
-                            runat="server"
-                          />
-                          <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <asp:Button
-                        id="addMeetingButton"
-                        type="button"
-                        class="btn btn-primary"
-                        text="Add"
-                        OnClick="OnClick_AddAppointment" 
-                        runat="server"
-                        CausesValidation="false"
-                      />
-                      </button>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div><!-- one card -->
-          </ItemTemplate>
-        </asp:Repeater>
-      </div><!-- rolodex cards -->
-      <script type="text/javascript">
-        $(function () {
-            $('#datetimepicker1').datetimepicker();
-        });
-      </script>
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <h3>prjWebForms</h3>
+            <ul>
+              <li>Initial project setup of an "Empty Web Site" project</li>
+              <li>Presistant storage of application with HttpContext.Current.Application</li>
+              <li>Styling with Bootstrap 4</li>
+              <li>Error handling and logging</li>
+              <li>Enter form for adding a contact</li>
+              <li>basic validation new contact form</li>
+              <li>List of rolodex contacts</li>
+            </ul>
+          </li>
+          <li class="list-group-item">
+            <h3>prjStateValidation</h3>
+            <ul>
+              <li>Switched to a "Web Application (.NET Framework)" project type</li>
+              <li>Switched to using session data and cookies</li>
+              <li>Switched to correct ASP.NET validation on new contact form</li>
+            </ul>
+          </li>
+          <li class="list-group-item">
+            <h3>prjControlsGraphics</h3>
+            <ul>
+              <li>Switched to a "Web Forms Site" project type</li>
+              <li>Added a delete button for each individual in Rolodex</li>
+              <li>Added a form for each contact to add a meeting or appointment (not working)</li>
+              <li>Added ASP.NET HTML code to build rolodex list, previously it was a html string builder</li>
+              <li>Added code to loop and show appointments for each contact card</li>
+              <li>Added Contact class for building rolodex</li>
+              <li>Added Appointment class for building rolodex</li>
+            </ul>
+          </li>
+          <li class="list-group-item">
+            <h3>prjStylesNavigation</h3>
+            <ul>
+              <li>Restarted project to get packaged pages (about, contact, login) working again</li>
+              <li>Renamed Contact to RolodexContact due to naming issue in VS</li>
+              <li>Switched style to use "Flatly" Bootswatch theme</li>
+              <li>Fixed auto-generated bootstrap on login page</li>
+              <li>Fixed auto-generated bootstrap on register page</li>
+              <li>Added fixed header to masterfile</li>
+              <li>Broke up code using masterfile</li>
+              <li>Added left side navbar</li>
+              <li>added a changelog</li>
+              <li>Setup github repo for remainder of project: 
+                <a href="https://github.com/mclaypool/csharp-rolodex-app">Repo</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2"></div>
     </div>
   </div>
 </asp:Content>
