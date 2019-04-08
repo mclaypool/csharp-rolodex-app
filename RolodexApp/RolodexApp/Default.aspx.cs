@@ -15,9 +15,9 @@ namespace RolodexApp
             {
                 if (Session["rolodexData"] == null)
                 {
-                    Session["rolodexData"] = new Dictionary<string, Contact>();
+                    Session["rolodexData"] = new Dictionary<string, RolodexContact>();
                 }
-                var data = (Dictionary<string, Contact>)Session["rolodexData"];
+                var data = (Dictionary<string, RolodexContact>)Session["rolodexData"];
                 rolodex.DataSource = data.Values;
                 rolodex.DataBind();
             }
@@ -32,8 +32,8 @@ namespace RolodexApp
             try
             {
                 var contactId = Guid.NewGuid().ToString();
-                var rolodexData = (Dictionary<string, Contact>)Session["rolodexData"];
-                var newContact = new Contact
+                var rolodexData = (Dictionary<string, RolodexContact>)Session["rolodexData"];
+                var newContact = new RolodexContact
                 {
                     Id = contactId,
                     FirstName = inputFirstName.Value,
@@ -64,7 +64,7 @@ namespace RolodexApp
             {
                 var button = sender as Button;
                 var contactId = button.CommandArgument.ToString();
-                var rolodexData = (Dictionary<string, Contact>)Session["rolodexData"];
+                var rolodexData = (Dictionary<string, RolodexContact>)Session["rolodexData"];
                 rolodexData.Remove(contactId);
                 Session["rolodexData"] = rolodexData;
 
@@ -83,7 +83,7 @@ namespace RolodexApp
             {
                 var button = sender as Button;
                 var contactId = button.CommandArgument.ToString();
-                
+
                 string inputDateTime = $"inputDateTime_{contactId}";
                 string inputType = $"inputType_{contactId}";
 

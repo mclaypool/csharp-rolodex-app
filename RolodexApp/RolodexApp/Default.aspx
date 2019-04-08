@@ -1,10 +1,9 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="RolodexApp._Default" %>
+﻿<%@ Page Title="Rolodex" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="RolodexApp._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-  <form class="container" runat="server">
-    <div class="row mt-5">
-      <!-- input form -->
-      <div class="col-md-12 col-lg-6 mb-3" style="max-height:100vh">
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-6"><!-- input form -->
         <div class="card">
           <div class="card-header">New Contact</div>
           <div class="card-body">
@@ -175,12 +174,11 @@
             </div>
           </div>
         </div>
-      </div>
-      <!-- rolodex cards -->
-      <div class="col-md-12 col-lg-6">
+      </div><!-- input form -->
+      <div class="col-md-6"><!-- rolodex cards -->
         <asp:Repeater id="rolodex" runat="server">
           <ItemTemplate>
-            <div class="card mb-3" style="max-width: 960px;">
+            <div class="card mb-3" style="max-width: 960px;"><!-- one card -->
               <div class="row no-gutters">
                 <div class="col-md-4">
                   <img src="static/images/default_image.png"
@@ -275,11 +273,11 @@
           </ItemTemplate>
         </asp:Repeater>
       </div><!-- rolodex cards -->
+      <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+      </script>
     </div>
-    <script type="text/javascript">
-      $(function () {
-          $('#datetimepicker1').datetimepicker();
-      });
-    </script>
-  </form>
+  </div>
 </asp:Content>
