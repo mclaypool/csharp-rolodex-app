@@ -10,11 +10,11 @@
             <h3>prjWebForms</h3>
             <ul>
               <li>Initial project setup of an "Empty Web Site" project</li>
-              <li>Presistant storage of application with HttpContext.Current.Application</li>
+              <li>Presistent storage of application with HttpContext.Current.Application</li>
               <li>Styling with Bootstrap 4</li>
               <li>Error handling and logging</li>
               <li>Enter form for adding a contact</li>
-              <li>basic validation new contact form</li>
+              <li>Basic validation new contact form</li>
               <li>List of rolodex contacts</li>
             </ul>
           </li>
@@ -30,7 +30,7 @@
             <h3>prjControlsGraphics</h3>
             <ul>
               <li>Switched to a "Web Forms Site" project type</li>
-              <li>Added a delete button for each individual in Rolodex</li>
+              <li>Added a delete button for each individual in rolodex</li>
               <li>Added a form for each contact to add a meeting or appointment (not working)</li>
               <li>Added ASP.NET HTML code to build rolodex list, previously it was a html string builder</li>
               <li>Added code to loop and show appointments for each contact card</li>
@@ -49,7 +49,7 @@
               <li>Added fixed header to masterfile</li>
               <li>Broke up code using masterfile</li>
               <li>Added left side navbar</li>
-              <li>added a changelog</li>
+              <li>Added a changelog</li>
               <li>Setup github repo for remainder of project: 
                 <a href="https://github.com/mclaypool/csharp-rolodex-app">Repo</a>
               </li>
