@@ -58,7 +58,7 @@
                   id="validatePhoneRegex"
                   runat="server"
                   class="text-danger small"
-                  ValidationExpression="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$"
+                  ValidationExpression="^\d{10}$"
                   ErrorMessage="Invalid phone format"
                   ControlToValidate="inputPhone" />             
               </div>
@@ -218,7 +218,7 @@
                       <ul class="list-unstyled pl-3">
                         <li class="font-weight-bold"><%# Eval("Street") %></li>
                         <li class="font-weight-bold">
-                          <%# Eval("City") %>, <%# Eval("State") %> <%# Eval("Zip") %>
+                          <%# Eval("City") %>, <%# Eval("StateAbbr") %> <%# Eval("Zip") %>
                         </li>
                       </ul>
                     </div>

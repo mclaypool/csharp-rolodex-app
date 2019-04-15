@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -9,12 +10,8 @@ public partial class Rolodex : System.Web.UI.Page
     {
         try
         {
-            if (Session["rolodexData"] == null)
-            {
-                Session["rolodexData"] = new Dictionary<string, RolodexContact>();
-            }
-            var data = (Dictionary<string, RolodexContact>)Session["rolodexData"];
-            rolodex.DataSource = data.Values;
+            var dbContext = new DatabaseEntities();
+            rolodex.DataSource = dbContext.RolodexContacts.ToList();
             rolodex.DataBind();
         }
         catch (Exception ex)
@@ -27,11 +24,8 @@ public partial class Rolodex : System.Web.UI.Page
     {
         try
         {
-            var contactId = Guid.NewGuid().ToString();
-            var rolodexData = (Dictionary<string, RolodexContact>)Session["rolodexData"];
             var newContact = new RolodexContact
             {
-                Id = contactId,
                 FirstName = inputFirstName.Value,
                 LastName = inputLastName.Value,
                 JobTitle = inputJobTitle.Value,
@@ -40,10 +34,13 @@ public partial class Rolodex : System.Web.UI.Page
                 Email = inputEmail.Value,
                 Street = inputStreet.Value,
                 City = inputCity.Value,
-                State = inputState.Value,
+                StateAbbr = inputState.Value,
                 Zip = inputZip.Value
             };
-            rolodexData[contactId] = newContact;
+
+            var dbContext = new DatabaseEntities();
+            dbContext.RolodexContacts.Add(newContact);
+            dbContext.SaveChanges();
 
             // reload page so form can be submitted again
             Page.Response.Redirect(Page.Request.Url.ToString(), false);
@@ -59,10 +56,13 @@ public partial class Rolodex : System.Web.UI.Page
         try
         {
             var button = sender as Button;
-            var contactId = button.CommandArgument.ToString();
-            var rolodexData = (Dictionary<string, RolodexContact>)Session["rolodexData"];
-            rolodexData.Remove(contactId);
-            Session["rolodexData"] = rolodexData;
+            var contactId = Convert.ToInt32(button.CommandArgument);
+
+            var dbContext = new DatabaseEntities();
+            var contact = new RolodexContact() { Id = contactId };
+            dbContext.RolodexContacts.Attach(contact);
+            dbContext.RolodexContacts.Remove(contact);
+            dbContext.SaveChanges();
 
             // reload page so form can be submitted again
             Page.Response.Redirect(Page.Request.Url.ToString(), false);

@@ -55,6 +55,24 @@
               </li>
             </ul>
           </li>
+          <li class="list-group-item">
+            <h3>prjDataBinding</h3>
+            <ul>
+              <li>Added SQL Server DB file to project</li>
+              <li>Set up connection to db file for project</li>
+              <li>Added RolodexContacts, Appointments and ApptTypes tables to db</li>
+              <li>Added ability to connect to db through Entity Framework</li>
+              <li>Converted rolodex code to store data in the db vs the session</li>
+              <li>gitignore log files</li>
+              <li>Changed the validation for phone numbers to match the db type</li>
+            </ul>
+          </li>
+          <li class="list-group-item">
+            <h3>TODOs</h3>
+            <ul>
+              <li>Add more validation or send dbValidations to frontend</li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div class="col-md-2"></div>
