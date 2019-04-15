@@ -70,6 +70,7 @@
           <li class="list-group-item">
             <h3>TODOs</h3>
             <ul>
+              <li>Fix/finish form to add meetings for each contact</li>
               <li>Add more validation or send dbValidations to frontend</li>
             </ul>
           </li>
