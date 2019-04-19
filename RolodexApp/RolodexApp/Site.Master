@@ -36,6 +36,9 @@
             <a href="~/Rolodex" runat="server" class="list-group-item list-group-item-action bg-light text-primary border-0">
               <span class="pl-3">Rolodex</span>
             </a>
+            <a href="~/RolodexList" runat="server" class="list-group-item list-group-item-action bg-light text-primary border-0">
+              <span class="pl-3">RolodexList</span>
+            </a>
             <a href="~/About" runat="server" class="list-group-item list-group-item-action bg-light text-primary border-0">
               <span class="pl-3">About</span>
             </a>
