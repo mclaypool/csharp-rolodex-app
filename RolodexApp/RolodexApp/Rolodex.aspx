@@ -154,6 +154,11 @@
                   </div>
                 </div>
               </div>
+              <!-- picture -->
+              <div class="form-group">
+                  <label for="FileUpload">Picture:</label>
+                  <asp:FileUpload ID="FileUpload" runat="server" />
+              </div>
               <!-- button -->
               <button
                 type="submit"
@@ -181,10 +186,11 @@
             <div class="card mb-3" style="max-width: 960px;"><!-- one card -->
               <div class="row no-gutters">
                 <div class="col-md-4">
-                  <img src="static/images/default_image.png"
-                        class="card-img h-100 w-100"
-                        alt="default_image.png"
-                        style="max-height: 15rem;">
+                  <img
+                    src="<%# (Eval("PictureUrl") == null) ? "static/images/Profile_Pictures/default_image.png" : Eval("PictureUrl") %>"
+                    class="card-img h-100 w-100 rounded-0"
+                    alt="profile picture"
+                    style="max-height: 15rem;">
                 </div>
                 <div class="col-md-8">
                   <asp:Button

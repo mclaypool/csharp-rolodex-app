@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -23,6 +24,14 @@ public partial class Rolodex : System.Web.UI.Page
     {
         try
         {
+            string pictureDir = null;
+            if (FileUpload.HasFile)
+            {
+                var filename = Guid.NewGuid() + Path.GetExtension(FileUpload.FileName);
+                pictureDir = "static/images/Profile_Pictures/" + filename;
+                FileUpload.SaveAs(Server.MapPath(pictureDir));
+            }
+
             var newContact = new RolodexContact
             {
                 FirstName = inputFirstName.Value,
@@ -34,7 +43,8 @@ public partial class Rolodex : System.Web.UI.Page
                 Street = inputStreet.Value,
                 City = inputCity.Value,
                 StateAbbr = inputState.Value,
-                Zip = inputZip.Value
+                Zip = inputZip.Value,
+                PictureUrl = pictureDir
             };
 
             var dbContext = new DatabaseEntities();
@@ -54,12 +64,18 @@ public partial class Rolodex : System.Web.UI.Page
     {
         try
         {
+            // get contact from db
             var button = sender as Button;
             var contactId = Convert.ToInt32(button.CommandArgument);
-
             var dbContext = new DatabaseEntities();
-            var contact = new RolodexContact() { Id = contactId };
-            dbContext.RolodexContacts.Attach(contact);
+            var contact = dbContext.RolodexContacts.FirstOrDefault(c => c.Id == contactId);
+
+            // delete picture first
+            var pictureUrl = contact.PictureUrl;
+            if (pictureUrl != null && File.Exists(Server.MapPath(pictureUrl)))
+                File.Delete(Server.MapPath(pictureUrl));
+
+            // then delete contact from db
             dbContext.RolodexContacts.Remove(contact);
             dbContext.SaveChanges();
 

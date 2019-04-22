@@ -68,6 +68,13 @@
             </ul>
           </li>
           <li class="list-group-item">
+            <h3>prjDataControlsStreams</h3>
+            <ul>
+              <li>Implimented a new page that uses a gridview to list the rolodex</li>
+              <li>Added the ability to add a profile image when adding a new contact</li>
+            </ul>
+          </li>
+          <li class="list-group-item">
             <h3>TODOs</h3>
             <ul>
               <li>Fix/finish form to add meetings for each contact</li>

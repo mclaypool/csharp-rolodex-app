@@ -37,6 +37,7 @@
           <Property Name="City" Type="varchar" MaxLength="200" />
           <Property Name="StateAbbr" Type="char" MaxLength="2" />
           <Property Name="Zip" Type="char" MaxLength="6" />
+          <Property Name="PictureUrl" Type="text" />
         </EntityType>
         <Association Name="FK__Appointme__Conta__4BAC3F29">
           <End Role="RolodexContacts" Type="Self.RolodexContacts" Multiplicity="1" />
@@ -140,6 +141,7 @@
           <Property Name="StateAbbr" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="Zip" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Appointments" Relationship="DatabaseModel.FK__Appointme__Conta__4BAC3F29" FromRole="RolodexContact" ToRole="Appointment" />
+          <Property Name="PictureUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Appointme__Conta__4BAC3F29">
           <End Type="DatabaseModel.RolodexContact" Role="RolodexContact" Multiplicity="1" />
@@ -181,6 +183,7 @@
           <EntitySetMapping Name="RolodexContacts">
             <EntityTypeMapping TypeName="DatabaseModel.RolodexContact">
               <MappingFragment StoreEntitySet="RolodexContacts">
+                <ScalarProperty Name="PictureUrl" ColumnName="PictureUrl" />
                 <ScalarProperty Name="Zip" ColumnName="Zip" />
                 <ScalarProperty Name="StateAbbr" ColumnName="StateAbbr" />
                 <ScalarProperty Name="City" ColumnName="City" />
