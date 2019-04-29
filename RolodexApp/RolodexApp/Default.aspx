@@ -75,10 +75,24 @@
             </ul>
           </li>
           <li class="list-group-item">
+            <h3>prjSecurity</h3>
+            <ul>
+              <li>Fixed HTML and CSS of prebuilt ASP.NET account mgmt page</li>
+              <li>Fixed HTML and CSS of logged-in navbar</li>
+              <li>Fixed HTML and CSS of log in form</li>
+              <li>Placed Rolodex pages behind authentication</li>
+              <li>Consolidated the Rolodex and User data into a single DB</li>
+              <li>Added 'default' role to users when they register</li>
+              <li>Made the 'default' role required to login</li>
+            </ul>
+          </li>
+          <li class="list-group-item">
             <h3>TODOs</h3>
             <ul>
               <li>Fix/finish form to add meetings for each contact</li>
               <li>Add more validation or send dbValidations to frontend</li>
+              <li>Add info to the About page</li>
+              <li>Add info to the Contact page</li>
             </ul>
           </li>
         </ul>

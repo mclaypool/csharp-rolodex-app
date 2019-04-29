@@ -33,12 +33,6 @@
             <a href="~/" runat="server" class="list-group-item list-group-item-action bg-light text-primary border-0">
               <span class="pl-3">Changelog</span>
             </a>
-            <a href="~/Rolodex" runat="server" class="list-group-item list-group-item-action bg-light text-primary border-0">
-              <span class="pl-3">Rolodex</span>
-            </a>
-            <a href="~/RolodexList" runat="server" class="list-group-item list-group-item-action bg-light text-primary border-0">
-              <span class="pl-3">RolodexList</span>
-            </a>
             <a href="~/About" runat="server" class="list-group-item list-group-item-action bg-light text-primary border-0">
               <span class="pl-3">About</span>
             </a>
@@ -61,10 +55,19 @@
                 <LoggedInTemplate>
                   <div class="sidebar-sticky list-group border-0">
                     <a href="~/Account/Manage" title="Manage your account" runat="server" 
-                      class="list-group-item list-group-item-action bg-light text-primary border-0">
-                      Hello, <%: Context.User.Identity.GetUserName()  %>
+                    class="list-group-item list-group-item-action bg-light text-primary border-0">
+                      <span class="pl-3">Account</span>
                     </a>
-                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                    <a href="~/Rolodex" runat="server" class="list-group-item list-group-item-action bg-light text-primary border-0">
+                      <span class="pl-3">Rolodex</span>
+                    </a>
+                    <a href="~/RolodexList" runat="server" class="list-group-item list-group-item-action bg-light text-primary border-0">
+                      <span class="pl-3">RolodexList</span>
+                    </a>
+                    <asp:LoginStatus runat="server" LogoutAction="Redirect" 
+                      LogoutText="&nbsp&nbsp&nbsp&nbsp&nbspLog off" 
+                      LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" 
+                      class="list-group-item list-group-item-action bg-light text-primary border-0" />
                   </div>
                 </LoggedInTemplate>
               </asp:LoginView>
