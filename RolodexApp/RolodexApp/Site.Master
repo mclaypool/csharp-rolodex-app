@@ -39,38 +39,44 @@
             <a href="~/Contact" runat="server" class="list-group-item list-group-item-action bg-light text-primary border-0">
               <span class="pl-3">Contact</span>
             </a>
-              <asp:LoginView runat="server" ViewStateMode="Disabled">
-                <AnonymousTemplate>
-                  <div class="sidebar-sticky list-group border-0">
-                    <a href="~/Account/Register" runat="server"
-                    class="list-group-item list-group-item-action bg-light text-primary border-0">
-                      <span class="pl-3">Register</span>
-                    </a>
-                    <a href="~/Account/Login" runat="server" 
-                    class="list-group-item list-group-item-action bg-light text-primary border-0">
-                      <span class="pl-3">Log in</span>
-                    </a>
-                  </div>
-                </AnonymousTemplate>
-                <LoggedInTemplate>
-                  <div class="sidebar-sticky list-group border-0">
-                    <a href="~/Account/Manage" title="Manage your account" runat="server" 
-                    class="list-group-item list-group-item-action bg-light text-primary border-0">
-                      <span class="pl-3">Account</span>
-                    </a>
+            <asp:LoginView runat="server" ViewStateMode="Disabled">
+              <AnonymousTemplate>
+                <a href="~/Account/Register" runat="server"
+                class="list-group-item list-group-item-action bg-light text-primary border-0">
+                  <span class="pl-3">Register</span>
+                </a>
+                <a href="~/Account/Login" runat="server" 
+                class="list-group-item list-group-item-action bg-light text-primary border-0">
+                  <span class="pl-3">Log in</span>
+                </a>
+              </AnonymousTemplate>
+            </asp:LoginView>
+            <asp:LoginView runat="server" ViewStateMode="Disabled">
+              <RoleGroups>
+                <asp:RoleGroup Roles="User">
+                  <ContentTemplate>
                     <a href="~/Rolodex" runat="server" class="list-group-item list-group-item-action bg-light text-primary border-0">
                       <span class="pl-3">Rolodex</span>
                     </a>
                     <a href="~/RolodexList" runat="server" class="list-group-item list-group-item-action bg-light text-primary border-0">
                       <span class="pl-3">RolodexList</span>
                     </a>
-                    <asp:LoginStatus runat="server" LogoutAction="Redirect" 
-                      LogoutText="&nbsp&nbsp&nbsp&nbsp&nbspLog off" 
-                      LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" 
-                      class="list-group-item list-group-item-action bg-light text-primary border-0" />
-                  </div>
-                </LoggedInTemplate>
-              </asp:LoginView>
+                  </ContentTemplate>
+                </asp:RoleGroup>
+              </RoleGroups>
+            </asp:LoginView>
+            <asp:LoginView runat="server" ViewStateMode="Disabled">
+              <LoggedInTemplate>
+                <a href="~/Account/Manage" title="Manage your account" runat="server" 
+                class="list-group-item list-group-item-action bg-light text-primary border-0">
+                  <span class="pl-3">Account</span>
+                </a>
+                <asp:LoginStatus runat="server" LogoutAction="Redirect" 
+                  LogoutText="&nbsp&nbsp&nbsp&nbsp&nbspLog off" 
+                  LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" 
+                  class="list-group-item list-group-item-action bg-light text-primary border-0" />
+              </LoggedInTemplate>
+            </asp:LoginView>
           </div>
         </nav>
         <div class="col-md-10">

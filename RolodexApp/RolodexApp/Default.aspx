@@ -80,10 +80,11 @@
               <li>Fixed HTML and CSS of prebuilt ASP.NET account mgmt page</li>
               <li>Fixed HTML and CSS of logged-in navbar</li>
               <li>Fixed HTML and CSS of log in form</li>
-              <li>Placed Rolodex pages behind authentication</li>
-              <li>Consolidated the Rolodex and User data into a single DB</li>
-              <li>Added 'default' role to users when they register</li>
-              <li>Made the 'default' role required to login</li>
+              <li>Added 'User' role to users when they register</li>
+              <li>Placed Rolodex and RolodexList pages behind authentication</li>
+              <li>Using the webconfig, made the 'User' role required to access Rolodex and RolodexList</li>
+              <li>Only show the Rolodex and RolodexList in the navbar to the 'User' role</li>
+              <li>Made a login that doesn't have the 'User' role for demoing</li>
             </ul>
           </li>
           <li class="list-group-item">
