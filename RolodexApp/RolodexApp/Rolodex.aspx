@@ -233,7 +233,13 @@
                 
               </div><!-- card details row -->
               <ul class="list-group list-group-flush">
-                
+                <!-- list of meetings -->
+                <asp:Repeater DataSource='<%# Eval("Appointments") %>' runat="server" >
+                  <ItemTemplate>
+                    <li class="list-group-item"><%# Eval("ApptType.Name") %>: <%# Eval("ApptTime") %></li>
+                  </ItemTemplate>
+                </asp:Repeater>
+                <!-- add meeting form -->
                 <li class="list-group-item pb-0">
                   <div class="form-row">
                     <div class="col-4">
@@ -281,7 +287,7 @@
       </div><!-- rolodex cards -->
       <script type="text/javascript">
         $(function () {
-            $('#datetimepicker1').datetimepicker();
+          $('#datetimepicker1').datetimepicker();
         });
       </script>
     </div>

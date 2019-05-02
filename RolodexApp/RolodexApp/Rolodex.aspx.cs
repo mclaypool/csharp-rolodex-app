@@ -10,8 +10,9 @@ public partial class Rolodex : System.Web.UI.Page
     {
         try
         {
-            var dbContext = new DatabaseEntities();
-            rolodex.DataSource = dbContext.RolodexContacts.ToList();
+            var db = new DatabaseEntities();
+            var contacts = db.RolodexContacts.ToList();
+            rolodex.DataSource = contacts;
             rolodex.DataBind();
         }
         catch (Exception ex)
@@ -47,9 +48,9 @@ public partial class Rolodex : System.Web.UI.Page
                 PictureUrl = pictureDir
             };
 
-            var dbContext = new DatabaseEntities();
-            dbContext.RolodexContacts.Add(newContact);
-            dbContext.SaveChanges();
+            var db = new DatabaseEntities();
+            db.RolodexContacts.Add(newContact);
+            db.SaveChanges();
 
             // reload page so form can be submitted again
             Page.Response.Redirect(Page.Request.Url.ToString(), false);
@@ -67,8 +68,8 @@ public partial class Rolodex : System.Web.UI.Page
             // get contact from db
             var button = sender as Button;
             var contactId = Convert.ToInt32(button.CommandArgument);
-            var dbContext = new DatabaseEntities();
-            var contact = dbContext.RolodexContacts.FirstOrDefault(c => c.Id == contactId);
+            var db = new DatabaseEntities();
+            var contact = db.RolodexContacts.FirstOrDefault(c => c.Id == contactId);
 
             // delete picture first
             var pictureUrl = contact.PictureUrl;
@@ -76,8 +77,8 @@ public partial class Rolodex : System.Web.UI.Page
                 File.Delete(Server.MapPath(pictureUrl));
 
             // then delete contact from db
-            dbContext.RolodexContacts.Remove(contact);
-            dbContext.SaveChanges();
+            db.RolodexContacts.Remove(contact);
+            db.SaveChanges();
 
             // reload page so form can be submitted again
             Page.Response.Redirect(Page.Request.Url.ToString(), false);

@@ -88,12 +88,18 @@
             </ul>
           </li>
           <li class="list-group-item">
+            <h3>prjFinal</h3>
+            <ul>
+              <li>Add info to the About page</li>
+              <li>Add info to the Contact page</li>
+              <li>Add code to display meetings using data from the DB</li>
+            </ul>
+          </li>
+          <li class="list-group-item">
             <h3>TODOs</h3>
             <ul>
               <li>Fix/finish form to add meetings for each contact</li>
               <li>Add more validation or send dbValidations to frontend</li>
-              <li>Add info to the About page</li>
-              <li>Add info to the Contact page</li>
             </ul>
           </li>
         </ul>
