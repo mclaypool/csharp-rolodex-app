@@ -233,7 +233,6 @@
                 
               </div><!-- card details row -->
               <ul class="list-group list-group-flush">
-                <!-- list of meetings -->
                 <asp:Repeater DataSource='<%# Eval("Appointments") %>' runat="server" >
                   <ItemTemplate>
                     <li class="list-group-item"><%# Eval("ApptType.Name") %>: <%# Eval("ApptTime") %></li>
@@ -242,41 +241,44 @@
                 <!-- add meeting form -->
                 <li class="list-group-item pb-0">
                   <div class="form-row">
+                    <!-- meeting or appointment -->
                     <div class="col-4">
                       <div class="input-group">
-                        <select class="custom-select" id="selectType">
-                          <option value="1" selected>Meeting</option>
-                          <option value="2">Appointment</option>
+                        <select class="custom-select" id='<%# "selectType_"+Eval("Id") %>'>
+                          <option value="1" selected>Appointment</option>
+                          <option value="2">Meeting</option>
                         </select>
                       </div>
                     </div>
+                    <!-- datetime -->
                     <div class="col-6">
                       <div class="form-group">
-                        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                        <div class="input-group date" id='<%# "inputDateTime_"+Eval("Id") %>' data-target-input="nearest">
                           <asp:TextBox
-                            id="inputDateTime"
                             type="text"
                             class="form-control datetimepicker-input"
-                            data-target="#datetimepicker1"
+                            data-target='<%# "#inputDateTime_"+Eval("Id") %>'
                             runat="server"
                           />
-                          <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                          <div class="input-group-append" data-target='<%# "#inputDateTime_"+Eval("Id") %>' data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                           </div>
                         </div>
                       </div>
+                      <script type="text/javascript">
+                        $(function () {
+                          $('<%# "#inputDateTime_"+Eval("Id") %>').datetimepicker();
+                        });
+                      </script>
                     </div>
+                    <!-- button -->
                     <div class="col">
-                      <asp:Button
-                        id="addMeetingButton"
+                      <Button
                         type="button"
                         class="btn btn-primary"
-                        text="Add"
-                        OnClick="OnClick_AddAppointment" 
-                        runat="server"
+                        OnClick="OnClick_AddAppointment('<%# "selectType_"+Eval("Id") %>', '<%# "#inputDateTime_" + Eval("Id") + " > input" %>')" 
                         CausesValidation="false"
-                      />
-                      </button>
+                      >Add</Button>
                     </div>
                   </div>
                 </li>
@@ -285,11 +287,12 @@
           </ItemTemplate>
         </asp:Repeater>
       </div><!-- rolodex cards -->
-      <script type="text/javascript">
-        $(function () {
-          $('#datetimepicker1').datetimepicker();
-        });
-      </script>
     </div>
+    <script type="text/javascript">
+      function OnClick_AddAppointment(selectPath, dateTimePath) {
+        console.log(document.getElementById(selectPath).value);
+        console.log(document.querySelector(dateTimePath).value);
+      }
+    </script>
   </div>
 </asp:Content>
