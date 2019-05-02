@@ -5,9 +5,10 @@
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-        <h2><%: Title %>.</h2>
-        <h3>Your application description page.</h3>
-        <p>Use this area to provide additional information.</p>
+        <h2><%: Title %></h2>
+        <hr />
+        <h3>CSCI 2060 - Rolodex App</h3>
+        <p>This is an app to store your personal contancts and meetings you have with them.</p>
       </div>
       <div class="col-md-3"></div>
     </div>
