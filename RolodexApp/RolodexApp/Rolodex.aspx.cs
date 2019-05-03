@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -89,24 +92,33 @@ public partial class Rolodex : System.Web.UI.Page
         }
     }
 
-    protected void OnClick_AddAppointment(object sender, EventArgs e)
+    protected void NewApptJson_ValueChanged(object sender, EventArgs e)
     {
         try
         {
-            var button = sender as Button;
-            var contactId = button.CommandArgument.ToString();
+            if (newApptJson == null) return;
 
-            string inputDateTime = $"inputDateTime_{contactId}";
-            string inputType = $"inputType_{contactId}";
+            var data = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(newApptJson.Value);
 
-            string timeString = Request.Form[inputDateTime].ToString();
-            if (timeString == null) return;
-            DateTime time = DateTime.Parse(timeString);
-            string type = Request.Form[inputType].ToString();
+            var newAppointment = new Appointment
+            {
+                ContactId = int.Parse(data["ContactId"]),
+                TypeId = int.Parse(data["TypeId"]),
+                ApptTime = DateTime.Parse(data["ApptTime"])
+            };
+            var db = new DatabaseEntities();
+            db.Appointments.Add(newAppointment);
+            db.SaveChanges();
+
+            newApptJson.Value = null;
+
+            // reload page to show new appointment
+            Page.Response.Redirect(Page.Request.Url.ToString(), false);
         }
         catch (Exception ex)
         {
             ErrorHandler.LogError(ex);
+            newApptJson.Value = null;
         }
 
     }

@@ -90,10 +90,19 @@
           <li class="list-group-item">
             <h3>prjFinal</h3>
             <ul>
-              <li>Add info to the About page</li>
-              <li>Add info to the Contact page</li>
-              <li>Add code to display meetings using data from the DB</li>
+              <li>Added info to the About page</li>
+              <li>Added info to the Contact page</li>
+              <li>Added code to display meetings using data from the DB</li>
               <li>Fix/finish form to add meetings for each contact</li>
+              <li>Changed primary key of Appointments table to prevent duplicates</li>
+            </ul>
+          </li>
+          <li class="list-group-item">
+            <h3>TODO after class</h3>
+            <ul>
+              <li>Merge user and contacts database files together</li>
+              <li>Add more/better validation on frontend forms</li>
+              <li>Figure out how to sort Appointments and Meetings with new pk</li>
             </ul>
           </li>
         </ul>

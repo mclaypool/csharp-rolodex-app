@@ -12,13 +12,12 @@ using System.Collections.Generic;
 
 public partial class Appointment
 {
-    public int Id { get; set; }
     public int ContactId { get; set; }
     public int TypeId { get; set; }
     public System.DateTime ApptTime { get; set; }
 
-    public virtual ApptType ApptType { get; set; }
     public virtual RolodexContact RolodexContact { get; set; }
+    public virtual ApptType ApptType { get; set; }
 }
 
 public partial class ApptType

@@ -276,7 +276,7 @@
                       <Button
                         type="button"
                         class="btn btn-primary"
-                        OnClick="OnClick_AddAppointment('<%# "selectType_"+Eval("Id") %>', '<%# "#inputDateTime_" + Eval("Id") + " > input" %>')" 
+                        OnClick="OnClick_AddAppointment(<%# Eval("Id") %>, '<%# "selectType_"+Eval("Id") %>', '<%# "#inputDateTime_" + Eval("Id") + " > input" %>')" 
                         CausesValidation="false"
                       >Add</Button>
                     </div>
@@ -288,10 +288,25 @@
         </asp:Repeater>
       </div><!-- rolodex cards -->
     </div>
+    <asp:HiddenField
+      id="newApptJson"
+      onvaluechanged="NewApptJson_ValueChanged"
+      runat="server"
+    />
     <script type="text/javascript">
-      function OnClick_AddAppointment(selectPath, dateTimePath) {
-        console.log(document.getElementById(selectPath).value);
-        console.log(document.querySelector(dateTimePath).value);
+      function OnClick_AddAppointment(contactId, selectPath, dateTimePath) {
+        const dateTime = document.querySelector(dateTimePath).value;
+        if (dateTime === null || dateTime === '') {
+          return;
+        }
+        
+        var data = {
+          "ContactId": contactId.toString(),
+          "TypeId": document.getElementById(selectPath).value.toString(),
+          "ApptTime": dateTime.toString()
+        }
+        document.getElementById('MainContent_newApptJson').value =  JSON.stringify(data);
+        __doPostBack('MainContent_newApptJson');
       }
     </script>
   </div>
